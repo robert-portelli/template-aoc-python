@@ -29,7 +29,7 @@ def download(year, day):
     output_path.write_text(puzzle.input_data)
 
     # Download example data
-    for _, example in enumerate(puzzle.examples):
+    for _, example in enumerate(puzzle.examples, start=1):
         match example:
             case example:
                 if example.input_data is not None:
