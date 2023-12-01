@@ -18,7 +18,9 @@ except ImportError:
 
 
 def download(year, day):
-    """Get input and write it to input.txt inside the puzzle folder"""
+    """Get input and write it to input.txt inside the puzzle folder
+    
+    Get example(s) and answer(s)"""
     puzzle = Puzzle(year=year, day=day)
 
     # Download input
@@ -27,8 +29,21 @@ def download(year, day):
     output_path.write_text(puzzle.input_data)
 
     # Download example data
-    output_path = output_path.with_stem("example1")
-    output_path.write_text(puzzle.example_data)
+    for _, example in enumerate(puzzle.examples):
+        match example:
+            case example:
+                if example.input_data is not None:
+                    output_path = output_path.with_stem(f"example{_}input")
+                    output_path.write_text(example.input_data)
+                if example.answer_a is not None:
+                    output_path = output_path.with_stem(f"example{_}answerA")
+                    output_path.write_text(example.answer_a)
+                if example.answer_b is not None:
+                    output_path = output_path.with_stem(f"example{_}answerB")
+                    output_path.write_text(example.answer_b)
+                if example.extra is not None:
+                    output_path = output_path.with_stem(f"example{_}extra")
+                    output_path.write_text(example.extra)
 
     # Add README with link to puzzle text
     readme_path = output_path.with_name("README.md")
