@@ -1,7 +1,7 @@
 # Settings
 _subdirectory: src
 _tasks:
-  - python ./download_input.py {{year}} {{day}}
+  - python ./download.py {{year}} {{day}}
 
 # Questions
 year:
