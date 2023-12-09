@@ -16,7 +16,7 @@ except ImportError:
     pypi_url = "https://pypi.org/project/advent-of-code-data/"
     print(f"Install {pypi_url} to autodownload input files")
     raise SystemExit()
-
+from tomli_w import dump
 
 YEAR = int(sys.argv[1])
 DAY = int(sys.argv[2])
@@ -25,6 +25,10 @@ YEAR_PATH = pathlib.Path(__file__).parent / str(YEAR)
 
 
 def main():
+    """
+    Main function for downloading Advent of Code input data.
+    Reads year and day from the command line, then calls input_dump() and examples_dump().
+    """
     try:
         # Read year and day from command line
         input_dump()
@@ -36,6 +40,9 @@ def main():
 
 
 def input_dump():
+    """
+    Download input for the Advent of Code puzzle and save it to a TOML file.
+    """
     # Download input
     output_path = next(YEAR_PATH.glob(f"{DAY:02d}*")) / "INPUT.toml"
     # output_path.write_text(puzzle.input_data)
@@ -48,6 +55,9 @@ def input_dump():
 
 
 def _compose_toml():
+    """
+    Compose a TOML representation of examples from the Advent of Code puzzle.
+    """
     array = [
         {key: value for key, value in example._asdict().items() if value is not None}
         for example in PUZZLE.examples
@@ -57,6 +67,9 @@ def _compose_toml():
 
 
 def examples_dump():
+    """
+    Download examples for the Advent of Code puzzle and save them to a TOML file.
+    """
     output_path = next(YEAR_PATH.glob(f"{DAY:02d}*")) / "EXAMPLES.toml"
     with open(output_path, "wb") as f:
         dump(_compose_toml(), f)
