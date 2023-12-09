@@ -16,7 +16,14 @@ except ImportError:
     pypi_url = "https://pypi.org/project/advent-of-code-data/"
     print(f"Install {pypi_url} to autodownload input files")
     raise SystemExit()
-from tomli_w import dump
+
+try:
+    from tomli_w import dump
+except ImportError:
+    pypi_url = "https://pypi.org/project/tomli-w/"
+    print(f"Install {pypi_url} into local advent of code environment \
+        to dump python objects into TOML")
+    raise SystemExit()
 
 YEAR = int(sys.argv[1])
 DAY = int(sys.argv[2])
@@ -45,7 +52,6 @@ def input_dump():
     """
     # Download input
     output_path = next(YEAR_PATH.glob(f"{DAY:02d}*")) / "INPUT.toml"
-    # output_path.write_text(puzzle.input_data)
     with open(output_path, "wb") as f:
         dump(
             # value is a list of strings
