@@ -8,12 +8,11 @@ from typing import List, Dict
 
 
 INPUT_PATH = pathlib.Path(__file__).parent / "INPUT.toml"
-PUZZLE: Dict[str, str] = tomllib.loads(INPUT_PATH.read_text())
-INPUT: str = PUZZLE['input_data']
+INPUT_TOML: Dict[str, List[str]] = tomllib.loads(INPUT_PATH.read_text())
+INPUT: List[str] = PUZZLE['input_data']
 
-def parse_data(puzzle_input):
+def parse_data(input):
     """Parse input."""
-    #return [int(line) for line in PUZZLE_INPUT]
 
 
 def part1(data):

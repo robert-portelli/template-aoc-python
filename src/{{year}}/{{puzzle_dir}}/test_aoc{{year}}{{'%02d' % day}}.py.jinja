@@ -3,29 +3,24 @@
 # Standard library imports
 import pathlib
 from typing import List, Dict
+import tomllib
 
 # Third party imports
 import aoc{{year}}{{'%02d'|format(day)}}
 import pytest
 
-PUZZLE_DIR = pathlib.Path(__file__).parent
 EXAMPLES_PATH = pathlib.Path(__file__).parent / "EXAMPLES.toml"
-EXAMPLES: Dict[str, Dict[str, str]] = tomllib.loads(EXAMPLES_PATH.read_text())
-EXAMPLE_INPUT: List[str] = [
+EXAMPLES_TOML: Dict[str, Dict[str, str]] = tomllib.loads(
+    EXAMPLES_PATH.read_text()
+    )
+EXAMPLES_INPUT: List[str] = [
     example[1]['input_data']
-    for example in EXAMPLES.items()
+    for example in EXAMPLES_TOML.items()
     ]
 
 @pytest.fixture
 def example1():
-    puzzle_input = (PUZZLE_DIR / "EXAMPLES.toml").read_text().rstrip()
-    return aoc201901.parse_data(puzzle_input)
-
-
-@pytest.fixture
-def example1():
-    puzzle_input = (PUZZLE_DIR / "example1.txt").read_text().rstrip()
-    return aoc{{year}}{{'%02d'|format(day)}}.parse_data(puzzle_input)
+    return aoc201901.parse_data(EXAMPLE_INPUT)
 
 
 @pytest.fixture
