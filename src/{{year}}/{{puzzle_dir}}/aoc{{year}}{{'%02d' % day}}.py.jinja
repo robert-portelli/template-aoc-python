@@ -9,7 +9,7 @@ from typing import List, Dict
 
 INPUT_PATH = pathlib.Path(__file__).parent / "INPUT.toml"
 INPUT_TOML: Dict[str, List[str]] = tomllib.loads(INPUT_PATH.read_text())
-INPUT: List[str] = PUZZLE['input_data']
+INPUT: List[str] = INPUT_TOML['input_data']
 
 def parse_data(input):
     """Parse input."""
