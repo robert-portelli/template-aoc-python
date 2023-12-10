@@ -54,8 +54,8 @@ def input_dump():
     output_path = next(YEAR_PATH.glob(f"{DAY:02d}*")) / "INPUT.toml"
     with open(output_path, "wb") as f:
         dump(
-            # value is a raw string
-            {"input": PUZZLE.input_data},
+            # value is a list of strings
+            {"input_data": PUZZLE.input_data.strip().split()},
             f,
         )
 

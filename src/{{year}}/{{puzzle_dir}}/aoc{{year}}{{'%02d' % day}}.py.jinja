@@ -3,10 +3,17 @@
 # Standard library imports
 import pathlib
 import sys
+import tomllib
+from typing import List, Dict
 
+
+INPUT_PATH = pathlib.Path(__file__).parent / "INPUT.toml"
+PUZZLE: Dict[str, str] = tomllib.loads(INPUT_PATH.read_text())
+INPUT: str = PUZZLE['input_data']
 
 def parse_data(puzzle_input):
     """Parse input."""
+    #return [int(line) for line in PUZZLE_INPUT]
 
 
 def part1(data):
