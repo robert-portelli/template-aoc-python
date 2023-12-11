@@ -11,7 +11,7 @@ INPUT_PATH = pathlib.Path(__file__).parent / "INPUT.toml"
 INPUT_TOML: Dict[str, List[str]] = tomllib.loads(INPUT_PATH.read_text())
 INPUT: List[str] = INPUT_TOML['input_data']
 
-def parse_data(input):
+def parse_data(input_data):
     """Parse input."""
 
 
