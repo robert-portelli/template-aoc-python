@@ -55,7 +55,7 @@ def input_dump():
     with open(output_path, "wb") as f:
         dump(
             # value is a list of strings
-            {"input_data": PUZZLE.input_data.strip().split()},
+            {"input_data": PUZZLE.input_data.strip()},
             f,
         )
 
